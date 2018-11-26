@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="154.fsx" />
+    <None Include="134.fsx" />
+    <None Include="129.fsx" />
+    <None Include="117.fsx" />
+    <None Include="104.fsx" />
+    <Compile Include="6_7.fsx" />
+    <None Include="4_8.fsx" />
+    <None Include="4_1.fsx" />
+    <None Include="File1.fsx" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
