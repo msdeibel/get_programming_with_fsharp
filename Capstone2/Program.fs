@@ -7,55 +7,52 @@ open System
 let main argv =
 
     let depositWithConsoleAudit = 
-        auditedOperation "deposit" consoleAudit deposit
+        deposit |> auditedOperation "deposit" consoleAudit
 
     let withdrawWithConsoleAudit = 
-        auditedOperation "withdraw" consoleAudit withdraw
+        withdraw |> auditedOperation "withdraw" consoleAudit
+
+    let depositWithFileAudit = 
+        deposit |> auditedOperation "deposit" fileSystemAudit
+
+    let withdrawWithFileAudit = 
+        withdraw |> auditedOperation "withdraw" fileSystemAudit
 
     let createUserAndAccount =
-        printfn "Enter your name and press <Enter>:"
-        let userName = 
-            Console.ReadLine()
-        
         let customer = 
+            printfn "Enter your name and press <Enter>:"
+            let customerName = Console.ReadLine()
             { 
-                Name = userName; 
+                Name = customerName; 
             }   
         
         let account = 
             { 
-                Id = new System.Guid(); 
+                Id = System.Guid.NewGuid(); 
                 Owner = customer; 
                 Balance = 0M 
             }
 
         account
 
-    let userAction =
-        printfn "Enter desired operation (d_eposit/w_ithdraw/e_xit) and press <Enter>: "
-        let operation =
-            Console.ReadLine();
-        operation
-        
-    let amount =
-        printfn "Enter amount :"
-        Decimal.Parse(Console.ReadLine())
-        
-    
-    //printfn "Bank account management system.\n--------------------------\n\n"
-
     let mutable account = createUserAndAccount
 
     while true do
-            let action = userAction
+        let action = 
+            printfn ""
+            printfn "Current balance is %M" account.Balance
+            printfn "Enter desired operation (d_eposit/w_ithdraw/e_xit) and press <Enter>: "
+            Console.ReadLine();
     
-            if action = "e" then Environment.Exit 0
+        if action = "e" then Environment.Exit 0
 
-            let amountForOperation = amount            
+        let amountForOperation = 
+            printfn "Enter amount :"
+            Console.ReadLine() |> Decimal.Parse
 
-            account <-
-                if userAction = "d" then account |> depositWithConsoleAudit amountForOperation
-                elif userAction = "w" then account |> withdrawWithConsoleAudit amountForOperation
-                else account
+        account <-
+            if action = "d" then account |> depositWithConsoleAudit amountForOperation
+            elif action = "w" then account |> withdrawWithConsoleAudit amountForOperation
+            else account
 
     0

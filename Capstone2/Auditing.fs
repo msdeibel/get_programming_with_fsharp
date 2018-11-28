@@ -5,7 +5,8 @@ open System.IO
 open Domain
 
 let consoleAudit (account:Account) (message:String) =
-    ignore(printfn "Account %s: %s", account.Id.ToString(),  message)
+   Console.WriteLine("Account " + account.Id.ToString() + ": " + message)
+    
 
 let fileSystemAudit (account:Account) (message:String) =
     let directoryName = 
@@ -20,18 +21,7 @@ let fileSystemAudit (account:Account) (message:String) =
     auditFileWriter.WriteLine(message)
     ignore(auditFileWriter.Close())
 
-let auditedOperation operationName auditor operation amount account =
-    let updatedAccount = operation (amount:decimal) (account:Account)
+    
 
-    let operationResult =
-        if account.Balance = updatedAccount.Balance
-        then "Operation rejected"
-        else "Balance is now " + updatedAccount.Balance.ToString()
 
-    let auditMessage =
-        "Account " + account.Id.ToString() + ": Operation " + operationName + " with amount " + amount.ToString() + ". " + operationResult
-
-    auditor account auditMessage
-
-    updatedAccount
 
