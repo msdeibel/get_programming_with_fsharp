@@ -20,8 +20,3 @@ let fileSystemAudit (account:Account) (message:String) =
     let auditFileWriter = File.AppendText(fileName)
     auditFileWriter.WriteLine(message)
     ignore(auditFileWriter.Close())
-
-    
-
-
-
