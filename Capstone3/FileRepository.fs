@@ -17,8 +17,15 @@ let private findAccountFolder owner =
 let private buildPath(owner, accountId:Guid) = sprintf @"%s\%s_%O" accountsPath owner accountId
 
 /// Logs to the file system
-let writeTransaction accountId owner message =
+//let writeTransaction accountId owner message =
+//    let path = buildPath(owner, accountId)    
+//    path |> Directory.CreateDirectory |> ignore
+//    let filePath = sprintf "%s/%d.txt" path (DateTime.UtcNow.ToFileTimeUtc())
+//    File.WriteAllText(filePath, message)
+
+let writeTransaction accountId owner transaction =
     let path = buildPath(owner, accountId)    
     path |> Directory.CreateDirectory |> ignore
     let filePath = sprintf "%s/%d.txt" path (DateTime.UtcNow.ToFileTimeUtc())
-    File.WriteAllText(filePath, message)
+    
+    File.WriteAllText(filePath, (Transactions.serialize transaction))

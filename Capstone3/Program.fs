@@ -4,6 +4,9 @@ open System
 open Capstone3.Domain
 open Capstone3.Operations
 
+let withdrawWithAudit = auditAs "withdraw" Auditing.composedLogger withdraw
+let depositWithAudit = auditAs "deposit" Auditing.composedLogger deposit
+
 let isValidCommand (command: char) = 
     let validCommands = ['d'; 'w'; 'x']
     if List.contains command validCommands then 
@@ -27,12 +30,24 @@ let getAmountConsole (command: char) =
 
 let processCommand (account: Account) (command: char, amount: decimal) =
     match command with
-    | 'd' -> deposit amount account
-    | 'w' -> withdraw amount account
+    | 'd' -> depositWithAudit amount account
+    | 'w' -> withdrawWithAudit amount account
     | 'x' -> exit amount account
     | _ ->
         printfn "%c is an invalid command" command
         account
+
+let loadAccount owner accountId transactions =
+    let openingAccount = { Owner = owner; Balance = 0M; AccountId = accountId } 
+    let sortedTransactions = transactions |> List.sortBy (fun t -> t.Timestamp)
+    
+    Seq.fold
+        (fun account transaction -> 
+            let newAccount = 
+                processCommand account (transaction.Operation, transaction.Amount)
+            newAccount)
+        openingAccount
+        sortedTransactions  
 
 [<EntryPoint>]
 let main _ =
@@ -40,8 +55,7 @@ let main _ =
         Console.Write "Please enter your name: "
         Console.ReadLine()
 
-    let withdrawWithAudit = auditAs "withdraw" Auditing.composedLogger withdraw
-    let depositWithAudit = auditAs "deposit" Auditing.composedLogger deposit
+    
 
     let openingAccount = { Owner = { Name = name }; Balance = 0M; AccountId = Guid.Empty } 
 

@@ -16,14 +16,18 @@ let exit amount account =
      { account with Balance = account.Balance + 0M }
 
 /// Runs some account operation such as withdraw or deposit with auditing.
-let auditAs operationName audit operation amount account =
-    let audit = audit account.AccountId account.Owner.Name
-    audit (sprintf "%O: Performing a %s operation for £%M..." DateTime.UtcNow operationName amount)
+let auditAs (operationName: string) audit operation amount account =
+    //let audit = audit account.AccountId account.Owner.Name
+    //audit (transa)
     let updatedAccount = operation amount account
     
     let accountIsUnchanged = (updatedAccount = account)
 
-    if accountIsUnchanged then audit (sprintf "%O: Transaction rejected!" DateTime.UtcNow) 
-    else audit (sprintf "%O: Transaction accepted! Balance is now £%M." DateTime.UtcNow updatedAccount.Balance)
+    let transaction = {Timestamp = DateTime.Now; Operation = operationName.[0]; Amount = amount; IsSuccess = not(accountIsUnchanged)}
 
+    audit account.AccountId account.Owner.Name transaction
     updatedAccount
+
+
+
+    
