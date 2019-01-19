@@ -28,6 +28,26 @@ let auditAs (operationName: string) audit operation amount account =
     audit account.AccountId account.Owner.Name transaction
     updatedAccount
 
+let processCommand (account: Account) (command: char, amount: decimal) =
+    match command with
+    | 'd' -> deposit amount account
+    | 'w' -> withdraw amount account
+    | 'x' -> exit amount account
+    | _ ->
+        printfn "%c is an invalid command" command
+        account
 
+let loadAccount owner accountId (transactions: Transaction List) =
+
+    let openingAccount = { Owner = owner; Balance = 0M; AccountId = accountId } 
+    let sortedTransactions = transactions |> List.sortBy (fun t -> t.Timestamp)
+    
+    Seq.fold
+        (fun account transaction -> 
+            let newAccount = 
+                processCommand account (transaction.Operation, transaction.Amount)
+            newAccount)
+        openingAccount
+        sortedTransactions     
 
     

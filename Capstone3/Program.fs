@@ -3,6 +3,7 @@ module Capstone3.Program
 open System
 open Capstone3.Domain
 open Capstone3.Operations
+//open System.Net.WebRequestMethods
 
 let withdrawWithAudit = auditAs "withdraw" Auditing.composedLogger withdraw
 let depositWithAudit = auditAs "deposit" Auditing.composedLogger deposit
@@ -55,9 +56,11 @@ let main _ =
         Console.Write "Please enter your name: "
         Console.ReadLine()
 
-    
+    let owner = { Name = name }
 
-    let openingAccount = { Owner = { Name = name }; Balance = 0M; AccountId = Guid.Empty } 
+    let transactions = FileRepository.findTransactionsOnDisk owner.Name
+
+    let openingAccount = Operations.loadAccount (owner) (fst(transactions)) (snd(transactions))
 
     let closingAccount =
         // Fill in the main loop here...
