@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="246.fsx" />
     <None Include="240.fsx" />
     <None Include="237.fsx" />
     <None Include="215.fsx" />
