@@ -40,3 +40,14 @@ let  createCustomer customerId primaryContact secondaryContact =
 createCustomer (CustomerId "C-123") (Email "nicky@myemail.com") (Some (Telephone "029 293 23"))
 createCustomer (CustomerId "C-123") (Telephone "029 293 23") (Some (Address "1 The Street"))
 createCustomer (CustomerId "C-123") (Address "1 The Street")
+
+type GenuineCustomer = GenuineCustomer of Customer
+
+let validateCustomer customer =
+    match customer.PrimaryContact with
+    | Email e when e.EndsWith "SuperCorp.com" -> Some (GenuineCustomer customer)
+    | Address _ | Telephone _ -> Some (GenuineCustomer customer)
+    | Email _ -> None
+
+let sendWelcomeEmail (GenuineCustomer customer) =
+    printfn "Hello, %A, and welcome to our site" customer.CustomerId
