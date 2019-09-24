@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.fsproj", "{BBB721DC-D8B2-4298-9E07-73E69A36BA8A}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Capstone2", "Capstone2\Capstone2.fsproj", "{F075A53F-46BF-4DD8-80A7-1FE0B6BE44E2}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Capstone3", "Capstone3\Capstone3.fsproj", "{5194054C-0572-4E34-9D53-9748B6641595}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Capstone4", "Capstone4\Capstone4.fsproj", "{0FC6C047-A8D7-478D-B8BB-65DF1EF5663B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5194054C-0572-4E34-9D53-9748B6641595}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5194054C-0572-4E34-9D53-9748B6641595}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5194054C-0572-4E34-9D53-9748B6641595}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC6C047-A8D7-478D-B8BB-65DF1EF5663B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC6C047-A8D7-478D-B8BB-65DF1EF5663B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC6C047-A8D7-478D-B8BB-65DF1EF5663B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC6C047-A8D7-478D-B8BB-65DF1EF5663B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
