@@ -5,6 +5,9 @@ open System
 type Customer = { Name : string }
 type Account = { AccountId : Guid; Owner : Customer; Balance : decimal }
 type Transaction = { Timestamp : DateTime; Operation : string; Amount : decimal; Accepted : bool }
+type BankOperation = Deposit | Withdraw
+type Command = AccountCommand of BankOperation | Exit
+
 
 module Transactions =
     /// Serializes a transaction
@@ -18,3 +21,16 @@ module Transactions =
           Operation = parts.[1]
           Amount = Decimal.Parse parts.[2]
           Accepted = Boolean.Parse parts.[3] }
+
+module Commands =
+    let tryParseCommand (c:char) =
+        match c with
+        | 'd' -> Some (AccountCommand Deposit)
+        | 'w' -> Some (AccountCommand Withdraw)
+        | 'x' -> Some Command.Exit
+        | _ -> None
+    
+    let tryGetBankOperation cmd =
+        match cmd with
+        | Exit -> None
+        | AccountCommand op -> Some op
