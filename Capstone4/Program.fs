@@ -20,11 +20,14 @@ module UserInput =
             Console.Write "(d)eposit, (w)ithdraw or e(x)it: "
             yield Console.ReadKey().KeyChar
             Console.WriteLine() }
-    
-    let getAmount command =
+
+    let tryGetAmount command = 
         Console.WriteLine()
         Console.Write "Enter Amount: "
-        command, Console.ReadLine() |> Decimal.Parse
+        let amount = Console.ReadLine() |> Decimal.TryParse
+        match amount with
+        | true, amount -> Some(command, amount)
+        | false, _ -> None
 
 [<EntryPoint>]
 let main _ =
@@ -48,7 +51,7 @@ let main _ =
         |> Seq.choose Commands.tryParseCommand
         |> Seq.takeWhile ((<>) Command.Exit)
         |> Seq.choose Commands.tryGetBankOperation
-        |> Seq.map getAmount
+        |> Seq.choose tryGetAmount
         |> Seq.fold processCommand openingAccount
     
     printfn ""
