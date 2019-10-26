@@ -7,8 +7,7 @@ open Capstone4.Operations
 let withdrawWithAudit = auditAs "withdraw" Auditing.composedLogger withdraw
 let depositWithAudit = auditAs "deposit" Auditing.composedLogger deposit
 
-let loadAccountOptional value = Option.map Operations.loadAccount
-
+let loadAccountOptional = Option.map Operations.loadAccount
 let tryLoadAccountFromDisk = FileRepository.tryFindTransactionsOnDisk >> loadAccountOptional
 
 [<AutoOpen>]
@@ -36,9 +35,19 @@ module UserInput =
 let main _ =
     let openingAccount =
         Console.Write "Please enter your name: "
-        Console.ReadLine() |> tryLoadAccountFromDisk
+        let owner  = Console.ReadLine()
+        //Console.ReadLine() |> tryLoadAccountFromDisk
+
+        match (tryLoadAccountFromDisk owner) with
+        | Some account -> account
+        | None ->
+            InCredit (CreditAccount { 
+                                        Balance = 0M
+                                        AccountId = Guid.NewGuid()
+                                        Owner = { Name = owner}
+            })
     
-    printfn "Current balance is £%M" openingAccount.Balance
+    printfn "Current balance is £%M" (openingAccount.GetField(fun a -> a.Balance))
 
     let processCommand account (command, amount) =
         printfn ""

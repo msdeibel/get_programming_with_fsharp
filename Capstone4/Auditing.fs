@@ -5,7 +5,8 @@ open Capstone4.Domain
 
 /// Logs to the console
 let printTransaction _ accountId transaction =
-    printfn "Account %O: %s of %M (approved: %b)" accountId transaction.Operation transaction.Amount transaction.Accepted
+    ignore (printfn "Account %O: %s of %M (approved: %b)" accountId transaction.Operation transaction.Amount)
+    
 
 // Logs to both console and file system
 let composedLogger = 
