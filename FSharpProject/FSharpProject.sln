@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FSharpProject", "FSharpProject\FSharpProject.fsproj", "{4CB348BC-773B-4229-942F-F05B7E37C8C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpProject", "CSharpProject\CSharpProject.csproj", "{CD08EBB7-5DD7-464B-A335-1CD622C2A2DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EF7C0F75-9A8F-4E9A-909B-AEE4AC0C9F65}"
+	ProjectSection(SolutionItems) = preProject
+		Scratchpad.fsx = Scratchpad.fsx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CB348BC-773B-4229-942F-F05B7E37C8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CB348BC-773B-4229-942F-F05B7E37C8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CB348BC-773B-4229-942F-F05B7E37C8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CB348BC-773B-4229-942F-F05B7E37C8C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD08EBB7-5DD7-464B-A335-1CD622C2A2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD08EBB7-5DD7-464B-A335-1CD622C2A2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD08EBB7-5DD7-464B-A335-1CD622C2A2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD08EBB7-5DD7-464B-A335-1CD622C2A2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C06F4AC-3E93-4633-9CEE-E4B052144EC9}
+	EndGlobalSection
+EndGlobal
