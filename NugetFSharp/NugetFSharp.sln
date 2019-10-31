@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NugetFSharp", "NugetFSharp\NugetFSharp.fsproj", "{19F53F27-2A20-4A01-AE81-E3D0CF30E8FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19F53F27-2A20-4A01-AE81-E3D0CF30E8FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19F53F27-2A20-4A01-AE81-E3D0CF30E8FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19F53F27-2A20-4A01-AE81-E3D0CF30E8FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19F53F27-2A20-4A01-AE81-E3D0CF30E8FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC5268E1-D071-4819-875B-8B6D760BC429}
+	EndGlobalSection
+EndGlobal
