@@ -18,3 +18,8 @@ type Vehicle =
       /// <summary>A motorbike is another type of vehicle</summary>
     | Motorbike of Name:string * EngineSize:float
 
+module Functions=
+    let CreateCar wheels brand x y =
+        { Wheels = wheels; Brand = brand; Dimensions = x, y }
+
+    let CreateFourWheelCar = CreateCar 4

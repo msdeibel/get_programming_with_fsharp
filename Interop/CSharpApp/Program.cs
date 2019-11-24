@@ -16,6 +16,13 @@ namespace CSharpApp
             var v1000 = Vehicle.NewMotorbike("Versys", 1000.0);
 
             var name = (v1000 as Vehicle.Motorbike).Name;
+
+            var fullCar = Model.Functions.CreateCar(4, "BMW", 2, 5);
+
+            var fourWheelCar = Model.Functions.CreateFourWheelCar
+                .Invoke("Audi")
+                .Invoke(2)
+                .Invoke(4);
         }
     }
 }
